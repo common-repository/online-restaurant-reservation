@@ -1,0 +1,9 @@
+/**
+ * _animation.scss
+ * Custom Online Restaurant Reservation Animations.
+ */
+@keyframes spin {
+	100% {
+		transform: rotate( 360deg );
+	}
+}

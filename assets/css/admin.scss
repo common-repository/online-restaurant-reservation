@@ -1,0 +1,1645 @@
+/**
+ * admin.scss
+ * General Online Restaurant Reservation admin styles.
+ */
+/**
+ * Imports
+ */
+@import 'mixins.scss';
+@import 'variables.scss';
+@import 'fonts.scss';
+
+/**
+ * Styling begins
+ */
+.blockUI.blockOverlay {
+	@include loader();
+}
+
+.clear {
+	clear: both;
+}
+
+.wrap.online-restaurant-reservation div.updated,
+.wrap.online-restaurant-reservation div.error {
+	margin-top: 10px;
+}
+
+/**
+ * Help Tip
+ */
+.online-restaurant-reservation-help-tip {
+	color: #666;
+	display: inline-block;
+	font-size: 1.1em;
+	font-style: normal;
+	height: 16px;
+	line-height: 16px;
+	position: relative;
+	vertical-align: middle;
+	width: 16px;
+
+	&::after {
+		@include icon_dashicons( '\f223' );
+		cursor: help;
+	}
+}
+
+h2 .online-restaurant-reservation-help-tip {
+	margin-top: -5px;
+	margin-left: 0.25em;
+}
+
+mark.notice {
+	background: #fff;
+	color: $red;
+	margin: 0 0 0 10px;
+}
+
+table.orr_emails {
+	position: relative;
+
+	td {
+		vertical-align: middle;
+		padding: 7px;
+		line-height: 2em;
+	}
+
+	tr:nth-child( odd ) td {
+		background: #f9f9f9;
+	}
+
+	th {
+		padding: 9px 7px !important;
+		vertical-align: middle;
+	}
+
+	td.name {
+		font-weight: 700;
+	}
+
+	.settings {
+		text-align: right;
+	}
+
+	.radio,
+	.default,
+	.status {
+		text-align: center;
+
+		.tips {
+			margin: 0 auto;
+		}
+
+		input {
+			margin: 0;
+		}
+	}
+	th.sort {
+		width: 28px;
+		padding: 0;
+	}
+	td.sort {
+		padding: 0 7px;
+		cursor: move;
+		font-size: 15px;
+		text-align: center;
+		vertical-align: middle;
+
+		&::before {
+			content: '\f333';
+			font-family: 'Dashicons';
+			text-align: center;
+			line-height: 1;
+			color: #999;
+			display: block;
+			width: 17px;
+			float: left;
+			height: 100%;
+		}
+	}
+	.orr-email-settings-table-name {
+		font-weight: 700;
+		span {
+			font-weight: normal;
+			color: #999;
+			margin: 0 0 0 4px !important;
+		}
+	}
+	.orr-email-settings-table-status {
+		text-align: center;
+		width: 1em;
+		.tips {
+			margin: 0 auto;
+		}
+	}
+	.orr-email-settings-table-actions a {
+		@include ir();
+		padding: 0 !important;
+		height: 2em !important;
+		width: 2em;
+
+		&::after {
+			@include icon_dashicons('\f111');
+			line-height: 1.85;
+		}
+	}
+}
+
+.online-restaurant-reservation-input-toggle {
+	height: 16px;
+	width: 32px;
+	border: 2px solid #d54e21;
+	background-color: #d54e21;
+	display: inline-block;
+	text-indent: -9999px;
+	border-radius: 10em;
+	position: relative;
+
+	input[type=checkbox] {
+		display: none;
+	}
+
+	&::before {
+		content: '';
+		display: block;
+		width: 16px;
+		height: 16px;
+		background: #fff;
+		position: absolute;
+		top: 0;
+		right: 0;
+		border-radius: 100%;
+	}
+
+	&.disabled,
+	&.online-restaurant-reservation-input-toggle--disabled {
+		border-color: #999;
+		background-color: #999;
+
+		&::before {
+			right: auto;
+			left: 0;
+		}
+	}
+}
+
+img.help_tip {
+	margin: 0 0 0 9px;
+	vertical-align: middle;
+}
+
+.postbox img.help_tip {
+	margin-top: 0;
+}
+
+.postbox .online-restaurant-reservation-help-tip {
+	margin: 0 0 0 9px;
+}
+
+.status-enabled,
+.status-manual,
+.status-disabled {
+	font-size: 1.4em;
+	@include ir();
+}
+
+.status-manual::before {
+	@include icon( '\e004' );
+	color: #999;
+}
+
+.status-enabled::before {
+	@include icon( '\e005' );
+	color: #d54e21;
+}
+
+.status-disabled::before {
+	@include icon( '\e006' );
+	color: #ccc;
+}
+
+.online-restaurant-reservation {
+
+	h2.orr-nav-tab-wrapper {
+		margin-bottom: 1em;
+	}
+
+	nav.orr-nav-tab-wrapper {
+		margin: 1.5em 0 1em;
+	}
+
+	.subsubsub {
+		margin: -8px 0 0;
+	}
+
+	#template div {
+		margin: 0;
+
+		p .button {
+			float: right;
+			margin-left: 10px;
+			margin-top: -4px;
+		}
+
+		.editor textarea {
+			margin-bottom: 8px;
+		}
+	}
+
+	textarea[disabled='disabled'] {
+		background: #dfdfdf !important;
+	}
+
+	table.form-table {
+		margin: 0;
+		position: relative;
+
+		.forminp-radio ul {
+			margin: 0;
+			li {
+				line-height: 1.4em;
+			}
+		}
+
+		input[type='text'],
+		input[type='number'],
+		input[type='email'] {
+			height: auto;
+		}
+
+		textarea.input-text {
+			height: 100%;
+			min-width: 150px;
+			display: block;
+		}
+
+		// Give regular settings inputs a standard width and padding.
+		select,
+		textarea,
+		input[type='text'],
+		input[type='email'],
+		input[type='number'],
+		input.regular-input {
+			width: 400px;
+			margin: 0;
+			padding: 6px;
+			box-sizing: border-box;
+		}
+
+		// Ignore nested inputs.
+		table {
+			select,
+			textarea,
+			input[type='text'],
+			input[type='email'],
+			input[type='number'],
+			input.regular-input {
+				width: auto;
+			}
+		}
+
+		textarea.wide-input {
+			width: 100%;
+		}
+
+		img.help_tip,
+		.online-restaurant-reservation-help-tip {
+			padding: 0;
+			margin: -4px 0 0 5px;
+			vertical-align: middle;
+			cursor: help;
+			line-height: 1;
+		}
+
+		span.help_tip {
+			cursor: help;
+			color: $blue;
+		}
+
+		th {
+			position: relative;
+			padding-right: 24px;
+		}
+
+		.select2-container {
+			vertical-align: top;
+			margin-bottom: 3px;
+		}
+
+		table.widefat th {
+			padding-right: inherit;
+		}
+
+		th img.help_tip,
+		th .online-restaurant-reservation-help-tip {
+			margin: 2px -24px 0 0;
+			float: right;
+		}
+
+		.wp-list-table .online-restaurant-reservation-help-tip {
+			float: none;
+		}
+
+		fieldset {
+			margin-top: 4px;
+
+			img.help_tip,
+			.online-restaurant-reservation-help-tip {
+				margin: -3px 0 0 5px;
+			}
+
+			p.description {
+				margin-bottom: 8px;
+			}
+
+			&:first-child {
+				margin-top: 0;
+			}
+		}
+
+		.iris-picker {
+			z-index: 100;
+			display: none;
+			position: absolute;
+			border: 1px solid #ccc;
+			border-radius: 3px;
+			box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+
+			.ui-slider {
+				border: 0 !important;
+				margin: 0 !important;
+				width: auto !important;
+				height: auto !important;
+				background: none transparent !important;
+
+				.ui-slider-handle {
+					margin-bottom: 0 !important;
+				}
+			}
+		}
+
+		.iris-error {
+			background-color: #ffafaf;
+		}
+
+		.colorpickpreview {
+			padding: 6px;
+			padding-left: 20px;
+			border: 1px solid #ddd;
+			/* rtl:ignore */
+			border-right: 0;
+			/* rtl:ignore */
+			margin-left: -3px;
+		}
+
+		.colorpick {
+			/* rtl:ignore */
+			border-left: 0;
+		}
+
+		.orr_emails_wrapper {
+			padding: 0 15px 10px 0;
+		}
+
+		.orr_schedules_wrapper {
+			padding: 0 15px 10px 0;
+		}
+	}
+}
+
+table.orr-reservation-schedules {
+	position: relative;
+
+	td {
+		vertical-align: middle;
+		padding: 10px;
+		line-height: 2em;
+	}
+
+	tr:nth-child( odd ) td {
+		background: #f9f9f9;
+	}
+
+	th {
+		padding: 9px 7px !important;
+		vertical-align: middle;
+	}
+
+	td.name {
+		font-weight: 700;
+	}
+
+	.settings {
+		text-align: right;
+	}
+
+	.radio,
+	.default,
+	.status {
+		text-align: center;
+
+		.tips {
+			margin: 0 auto;
+		}
+
+		input {
+			margin: 0;
+		}
+	}
+	th.sort {
+		width: 28px;
+		padding: 0;
+	}
+	td.orr-reservation-schedule {
+		font-size: 15px;
+		text-align: center;
+		&::before {
+			content: '\f145';
+			font-family: 'Dashicons';
+			text-align: center;
+			line-height: 1;
+			color: #999;
+			display: block;
+			width: 17px;
+			float: left;
+			height: 100%;
+			line-height: 24px;
+		}
+	}
+	.orr-reservation-schedule-table-opening_time,
+	.orr-reservation-schedule-table-closing_time {
+		width: 24%;
+	}
+	.orr-reservation-schedule-table-closed {
+		text-align: center;
+
+		a {
+			display: inline-block;
+
+			&:focus, &:active {
+				box-shadow: none;
+			}
+		}
+
+		.online-restaurant-reservation-input-toggle {
+			margin-top: 3px;
+		}
+	}
+}
+
+table.orr-reservation-exceptions {
+	td, th {
+		vertical-align: top;
+		line-height: 24px;
+		padding: 1em !important;
+		font-size: 14px;
+		background: #fff;
+		li {
+			line-height: 24px;
+			font-size: 14px;
+		}
+		.online-restaurant-reservation-help-tip {
+			margin: 0 !important;
+		}
+	}
+	thead {
+		th {
+			vertical-align: middle;
+		}
+		.orr-reservation-exception-sort {
+			width: 1%;
+			text-align: center;
+		}
+	}
+	tbody td {
+		padding: 1.5em 1em !important;
+	}
+	td.orr-reservation-exceptions-blank-state {
+		p {
+			padding-left: 2em !important;
+		}
+	}
+	tr.odd, .orr-reservation-exception-rows tr:nth-child( odd ) {
+		td {
+			background: #f9f9f9;
+		}
+	}
+	td.orr-reservation-exception-sort {
+		cursor: move;
+		font-size: 15px;
+		text-align: center;
+		&::before {
+			content: '\f333';
+			font-family: 'Dashicons';
+			text-align: center;
+			line-height: 1;
+			color: #999;
+			display: block;
+			width: 17px;
+			float: left;
+			height: 100%;
+			line-height: 24px;
+		}
+		&:hover::before {
+			color: #333;
+		}
+	}
+	td.orr-reservation-schedule-calender {
+		text-align: center;
+		&::before {
+			content: '\f145';
+			font-family: 'dashicons';
+			text-align: center;
+			line-height: 1;
+			color: #999;
+			display: block;
+			width: 17px;
+			float: left;
+			height: 100%;
+			line-height: 24px;
+		}
+	}
+	.orr-reservation-exception-name {
+		width: 25%;
+	}
+	.orr-reservation-exception-time {
+		width: 35%;
+	}
+	.orr-reservation-exception-description,
+	.orr-reservation-exception-name,
+	.orr-reservation-exception-date,
+	.orr-reservation-exception-time {
+		input, select, textarea {
+			width: 100%;
+		}
+		input {
+			padding: 5px;
+		}
+		input.range_datepicker {
+			width: 46%;
+		}
+		.orr-exception-date-range-toggle {
+			font-size: 0.9em;
+			text-decoration: underline;
+		}
+		.orr-exception-date-range-toggle + .range_datepicker {
+			display: none;
+		}
+		a.orr-reservation-exception-delete {
+			color: #a00;
+
+			&:hover {
+				color: red;
+			}
+		}
+	}
+	.orr-reservation-exception-closed {
+		text-align: center;
+
+		a {
+			display: inline-block;
+
+			&:focus, &:active {
+				box-shadow: none;
+			}
+		}
+
+		.online-restaurant-reservation-input-toggle {
+			margin-top: 3px;
+		}
+	}
+	tfoot {
+		input, select {
+			vertical-align: middle !important;
+		}
+		.button-secondary {
+			float: right;
+		}
+	}
+	.editing {
+		.orr-reservation-exception-view, .orr-reservation-exception-edit {
+			display: none;
+		}
+	}
+	.orr-reservation-exception-time {
+		.orr-time-range {
+			display: block;
+		}
+		.orr-time-range-closed {
+			display: none;
+		}
+		&.orr-closed {
+			.orr-time-range {
+				display: none;
+			}
+			.orr-time-range-closed {
+				display: block;
+			}
+		}
+	}
+}
+
+.widefat {
+
+	.column-reservation_actions,
+	.column-orr_actions {
+		width: 110px;
+
+		a.button {
+			float: left;
+			margin: 0 4px 2px 0;
+			cursor: pointer;
+			padding: 3px 4px;
+			height: auto;
+
+			img {
+				display: block;
+				width: 12px;
+				height: auto;
+			}
+		}
+	}
+
+	small.meta {
+		display: block;
+		color: #999;
+		font-size: inherit;
+		margin: 3px 0;
+	}
+}
+
+.post-type-table_reservation {
+	.tablenav .one-page .displaying-num {
+		display: none;
+	}
+	.wp-list-table {
+		margin-top: 1em;
+		th {
+			padding: 0.75em 1em;
+		}
+		th.sortable a, th.sorted a {
+			padding: 0;
+		}
+		.check-column {
+			width: 1px;
+			white-space: nowrap;
+			vertical-align: middle;
+			padding: 1em !important;
+			input {
+				vertical-align: text-top;
+				margin: 1px 0;
+			}
+		}
+		td.column-reservation_number {
+			line-height: 26px;
+			.reservation-preview {
+				float: right;
+				width: 16px;
+				padding: 20px 4px 4px;
+				height: 0;
+				overflow: hidden;
+				position: relative;
+				border: 2px solid transparent;
+				border-radius: 4px;
+
+				&::before {
+					@include icon_dashicons('\f177');
+					line-height: 16px;
+					font-size: 14px;
+					vertical-align: middle;
+					top: 4px;
+
+				}
+				&:hover {
+					border: 2px solid #00a0d2;
+				}
+			}
+			.reservation-preview.disabled {
+				&::before {
+					content: '';
+					background: url(../../../../../wp-includes/images/wpspin.gif) no-repeat center top;
+				}
+			}
+		}
+		.column-reservation_date {
+			width: 10ch;
+		}
+		.column-reservation_time {
+			width: 10ch;
+		}
+		.column-reservation_number {
+			width: 25ch;
+		}
+		.column-reservation_status {
+			width: 20ch;
+		}
+		.column-reservation_size {
+			text-align: right;
+			width: 5ch;
+			a span {
+				float: right;
+			}
+		}
+		.column-customer_details {
+			width: 20ch;
+		}
+		th:first-child,
+		td:first-child {
+			padding-left: 2em;
+		}
+		th:last-child,
+		td:last-child {
+			padding-right: 2em;
+		}
+		tbody {
+			th, td {
+				border-top: 1px solid #f5f5f5;
+			}
+			td {
+				vertical-align: middle;
+				padding: 1em;
+
+				.post-row-actions {
+					display: none;
+				}
+
+				.reservation-status {
+					display: inline-flex;
+					padding: 0 1em;
+					line-height: 2.5em;
+					color: #777;
+					background: #e5e5e5;
+					border-radius: 4px;
+					border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+					margin: -.5em 0;
+					cursor: inherit !important;
+
+					&.status-check-in {
+						background: #c8d7e1;
+						color: #2e4453;
+					}
+
+					&.status-closed {
+						background: #eba3a3;
+						color: #761919;
+					}
+
+					&.status-confirmed {
+						background: #c6e1c6;
+						color: #5b841b;
+					}
+
+					&.status-trash {
+						background: #eba3a3;
+						color: #761919;
+					}
+				}
+			}
+			tr:hover:not(.status-trash) {
+				td, th {
+					cursor: pointer;
+				}
+			}
+		}
+	}
+}
+
+// Hide some columns on smaller screens.
+@media only screen and (max-width: 1400px) {
+	.post-type-table_reservation .wp-list-table {
+		.column-customer_details {
+			display: none;
+			visibility: hidden;
+		}
+	}
+}
+
+@media only screen and (max-width: 1200px) {
+	.post-type-table_reservation .wp-list-table {
+		.column-reservation_size {
+			display: none;
+			visibility: hidden;
+		}
+	}
+}
+
+.orr-reservation-preview {
+	article {
+		padding: 0 !important;
+	}
+	.orr-reservation-preview__table {
+		width: 100%;
+		margin: 0;
+		border-bottom: 1px solid #ccc;
+		th, td {
+			padding: 1em 1.5em;
+			text-align: left;
+			border: 0;
+			border-bottom: 1px solid #eee;
+			margin: 0;
+			background: transparent;
+			box-shadow: none;
+			text-align: right;
+			vertical-align: top;
+		}
+		td:first-child,
+		th:first-child {
+			text-align: left;
+		}
+		th {
+			border-color: #ccc;
+		}
+		tr:last-child td {
+			border: 0;
+		}
+		.orr-reservation-item-meta {
+			margin-top: .5em;
+			th, td {
+				padding: 0;
+				border: 0;
+				text-align: left;
+				vertical-align: top;
+			}
+			td:last-child {
+				padding-left: .5em;
+			}
+		}
+	}
+	.orr-reservation-preview-details {
+		overflow: hidden;
+		.orr-reservation-preview-detail {
+			width: 50%;
+			float: left;
+			padding: 1.5em;
+			box-sizing: border-box;
+
+			h2 {
+				margin-top: 0;
+			}
+			strong {
+				display: block;
+				margin-top: 1em;
+			}
+		}
+	}
+}
+
+.reservation_actions {
+	.confirmed,
+	.check-in,
+	.view {
+		@include ir();
+		padding: 0 !important;
+		height: 2em !important;
+		width: 2em;
+	}
+
+	.confirmed::after {
+		@include icon('\e007');
+		line-height: 1.85;
+	}
+
+	.check-in::after {
+		@include icon_dashicons('\f147');
+		line-height: 1.85;
+	}
+
+	.view::after {
+		@include icon_dashicons('\f177');
+		line-height: 1.85;
+	}
+}
+
+/**
+ * Meta boxes
+ */
+.button.orr-reload {
+	@include ir();
+	padding: 0;
+	height: 28px;
+	width: 28px !important;
+	display: inline-block;
+
+	&::after {
+		@include icon_dashicons('\f345');
+		line-height: 28px;
+	}
+}
+
+#online-restaurant-reservation-data {
+	.hndle,
+	.handlediv {
+		display: none;
+	}
+
+	.inside {
+		margin: 0;
+		padding: 0;
+		display: block !important;
+	}
+}
+
+#reservation_data {
+	padding: 24px;
+
+	h2 {
+		margin: 0;
+		font-family: 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', sans-serif;
+		font-size: 21px;
+		font-weight: normal;
+		line-height: 1.2;
+		text-shadow: 1px 1px 1px white;
+		padding: 0;
+	}
+
+	h3 {
+		font-size: 14px;
+	}
+
+	h3, h4 {
+		color: #333;
+		margin: 1.33em 0 0;
+	}
+
+	p {
+		color: #777;
+	}
+
+	p.reservation_meta {
+		margin: 0;
+		font-family: 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', sans-serif;
+		font-weight: normal;
+		line-height: 1.6em;
+		font-size: 16px;
+	}
+
+	.reservation_data_column_container {
+		clear: both;
+	}
+
+	.reservation_data_column {
+		width: 47%;
+		padding: 0 2% 0 0;
+		float: left;
+
+		> h3 span {
+			display: block;
+		}
+
+		&:last-child {
+			padding-right: 0;
+		}
+
+		p {
+			padding: 0 !important;
+		}
+
+		.details strong {
+			display: block;
+		}
+
+		.form-field {
+			float: left;
+			clear: left;
+			width: 48%;
+			padding: 0;
+			margin: 9px 0 0;
+
+			label {
+				display: block;
+				padding: 0 0 3px;
+			}
+
+			input,
+			textarea {
+				width: 100%;
+			}
+
+			select {
+				width: 100%;
+			}
+
+			.select2-container {
+				width: 100% !important;
+			}
+
+			.date-picker {
+				width: 50%;
+			}
+
+			.hour,
+			.minute {
+				width: 3.5em;
+			}
+
+			small {
+				display: block;
+				margin: 5px 0 0;
+				color: #999;
+			}
+		}
+
+		.form-field.last,
+		._last_name_field,
+		._reservation_phone_field {
+			float: right;
+			clear: right;
+		}
+
+		.form-field-wide,
+		._party_size_field {
+			width: 100%;
+			clear: both;
+
+			input,
+			textarea,
+			select,
+			.orr-enhanced-select,
+			.orr-category-search,
+			.orr-customer-search {
+				width: 100%;
+			}
+		}
+
+		p.none_set {
+			color: #999;
+		}
+
+		.orr-customer-user,
+		.orr-reservation-status {
+			label a {
+				float: right;
+			}
+		}
+
+		div.edit_details {
+			display: none;
+			zoom: 1;
+			padding-right: 1px;
+		}
+
+		a.edit_details {
+			width: 14px;
+			height: 0;
+			padding: 14px 0 0;
+			margin: 0 0 0 6px;
+			overflow: hidden;
+			position: relative;
+			color: #999;
+			border: 0;
+			float: right;
+			&:hover, &:focus {
+				color: #000;
+			}
+			&::after {
+				font-family: 'Dashicons';
+				position: absolute;
+				top: 0;
+				left: 0;
+				text-align: center;
+				vertical-align: top;
+				line-height: 14px;
+				font-size: 14px;
+				font-weight: 400;
+				-webkit-font-smoothing: antialiased;
+			}
+		}
+		a.edit_details::after {
+			content: '\f464';
+		}
+	}
+}
+
+.reservation_actions {
+	margin: 0;
+	overflow: hidden;
+	zoom: 1;
+
+	li {
+		border-top: 1px solid #fff;
+		border-bottom: 1px solid #ddd;
+		padding: 6px 0;
+		margin: 0;
+		line-height: 1.6em;
+		float: left;
+		width: 50%;
+		text-align: center;
+
+		a {
+			float: none;
+			text-align: center;
+			text-decoration: underline;
+		}
+
+		&.wide {
+			width: auto;
+			float: none;
+			clear: both;
+			padding: 6px;
+			text-align: left;
+			overflow: hidden;
+		}
+
+		#delete-action {
+			line-height: 25px;
+			vertical-align: middle;
+			text-align: left;
+			float: left;
+		}
+
+		.save_reservation {
+			float: right;
+		}
+
+		&#actions {
+			overflow: hidden;
+
+			.button {
+				width: 24px;
+				box-sizing: border-box;
+				float: right;
+			}
+
+			select {
+				width: 225px;
+				box-sizing: border-box;
+				float: left;
+			}
+		}
+	}
+}
+
+#poststuff #online-restaurant-reservation-actions .inside {
+	margin: 0;
+	padding: 0;
+
+	ul.reservation_actions li {
+		padding: 6px 10px;
+		box-sizing: border-box;
+
+		&:last-child {
+			border-bottom: 0;
+		}
+	}
+}
+
+/**
+ * Tooltips
+ */
+.tips {
+	cursor: help;
+	text-decoration: none;
+}
+
+img.tips {
+	padding: 5px 0 0;
+}
+
+#tiptip_holder {
+	display: none;
+	z-index: 8675309;
+	position: absolute;
+	top: 0;
+	/*rtl:ignore*/
+	left: 0;
+
+	&.tip_top {
+		padding-bottom: 5px;
+
+		#tiptip_arrow_inner {
+			margin-top: -7px;
+			margin-left: -6px;
+			border-top-color: #333;
+		}
+	}
+
+	&.tip_bottom {
+		padding-top: 5px;
+
+		#tiptip_arrow_inner {
+			margin-top: -5px;
+			margin-left: -6px;
+			border-bottom-color: #333;
+		}
+	}
+
+	&.tip_right {
+		padding-left: 5px;
+
+		#tiptip_arrow_inner {
+			margin-top: -6px;
+			margin-left: -5px;
+			border-right-color: #333;
+		}
+	}
+
+	&.tip_left {
+		padding-right: 5px;
+
+		#tiptip_arrow_inner {
+			margin-top: -6px;
+			margin-left: -7px;
+			border-left-color: #333;
+		}
+	}
+}
+
+#tiptip_content,
+.orr_error_tip {
+	color: #fff;
+	font-size: 0.8em;
+	max-width: 150px;
+	background: #333;
+	text-align: center;
+	border-radius: 3px;
+	padding: 0.618em 1em;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+
+	code {
+		padding: 1px;
+		background: #888;
+	}
+}
+
+#tiptip_arrow,
+#tiptip_arrow_inner {
+	position: absolute;
+	border-color: transparent;
+	border-style: solid;
+	border-width: 6px;
+	height: 0;
+	width: 0;
+}
+
+/*rtl:raw:
+#tiptip_arrow {
+	right: 50%;
+	margin-right: -6px;
+}
+*/
+
+.orr_error_tip {
+	max-width: 20em;
+	line-height: 1.8em;
+	position: absolute;
+	white-space: normal;
+	background: #d82223;
+	margin: 1.5em 1px 0 -1em;
+	z-index: 9999999;
+
+	&::after {
+		content: '';
+		display: block;
+		border: 8px solid #d82223;
+		border-right-color: transparent;
+		border-left-color: transparent;
+		border-top-color: transparent;
+		position: absolute;
+		top: -3px;
+		left: 50%;
+		margin: -1em 0 0 -3px;
+	}
+}
+
+.online-restaurant-reservation-BlankState {
+	text-align: center;
+	padding: 5em 0 0;
+
+	.online-restaurant-reservation-BlankState-message {
+		color: #aaa;
+		margin: 0 auto 1.5em;
+		line-height: 1.5em;
+		font-size: 1.2em;
+		max-width: 500px;
+
+		&::before {
+			color: #ddd;
+			text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.2), 0 1px 0 rgba(255, 255, 255, 0.8);
+			font-size: 8em;
+			display: block;
+			position: relative !important;
+			top: auto;
+			left: auto;
+			line-height: 1em;
+			margin: 0 0 0.1875em;
+		}
+	}
+
+	.online-restaurant-reservation-BlankState-cta {
+		font-size: 1.2em;
+		padding: 0.75em 1.5em;
+		height: auto;
+		display: inline-block !important;
+	}
+}
+
+.post-type-table_reservation .online-restaurant-reservation-BlankState-message::before {
+	@include icon_dashicons('\f508');
+}
+
+/**
+ * Small screen optimisation
+ */
+@media only screen and (max-width: 1280px) {
+	#reservation_data {
+		.reservation_data_column {
+			width: 100%;
+
+			&:first-child {
+				padding-right: 0;
+			}
+		}
+	}
+}
+
+@media only screen and (max-width: 782px) {
+	.post-type-table_reservation {
+		.wp-list-table {
+			.column-reservation_status {
+				display: none;
+				text-align: left;
+				padding-bottom: 0;
+
+				mark {
+					margin: 0;
+				}
+
+				&::before {
+					display: none !important;
+				}
+			}
+
+			.column-customer_message {
+				text-align: inherit;
+			}
+
+			.is-expanded td:not(.hidden ) {
+				overflow: visible;
+			}
+
+			.toggle-row {
+				top: -15px;
+			}
+		}
+	}
+}
+
+/**
+ * Backbone modal dialog
+ */
+.orr-backbone-modal {
+	* {
+		box-sizing: border-box;
+	}
+
+	.orr-backbone-modal-content {
+		position: fixed;
+		background: #fff;
+		z-index: 100000;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		width: 500px;
+		article {
+			overflow: auto;
+		}
+	}
+
+	.select2-container {
+		width: 100% !important;
+	}
+}
+
+@media screen and (max-width: 782px) {
+	.orr-backbone-modal .orr-backbone-modal-content {
+		width: 100%;
+		height: 100%;
+		min-width: 100%;
+	}
+}
+
+.orr-backbone-modal-backdrop {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	min-height: 360px;
+	background: #000;
+	opacity: 0.7;
+	z-index: 99900;
+}
+
+.orr-backbone-modal-main {
+	padding-bottom: 55px;
+
+	header,
+	article {
+		display: block;
+		position: relative;
+	}
+
+	.orr-backbone-modal-header {
+		height: auto;
+		background: #fcfcfc;
+		padding: 1em 1.5em;
+		border-bottom: 1px solid #ddd;
+
+		h1 {
+			margin: 0;
+			font-size: 18px;
+			font-weight: 700;
+			line-height: 1.5em;
+		}
+
+		.modal-close-link {
+			cursor: pointer;
+			color: #777;
+			height: 54px;
+			width: 54px;
+			padding: 0;
+			position: absolute;
+			top: 0;
+			right: 0;
+			text-align: center;
+			border: 0;
+			border-left: 1px solid #ddd;
+			background-color: transparent;
+			transition: color 0.1s ease-in-out, background 0.1s ease-in-out;
+
+			&::before {
+				font: normal 22px/50px 'dashicons' !important;
+				color: #666;
+				display: block;
+				content: '\f335';
+				font-weight: 300;
+			}
+
+			&:hover,
+			&:focus {
+				background: #ddd;
+				border-color: #ccc;
+				color: #000;
+			}
+
+			&:focus {
+				outline: none;
+			}
+		}
+	}
+
+	article {
+		padding: 1.5em;
+
+		p {
+			margin: 1.5em 0;
+		}
+		p:first-child {
+			margin-top: 0;
+		}
+
+		p:last-child {
+			margin-bottom: 0;
+		}
+		.pagination {
+			padding: 10px 0 0;
+			text-align: center;
+		}
+	}
+
+	footer {
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		z-index: 100;
+		padding: 1em 1.5em;
+		background: #fcfcfc;
+		border-top: 1px solid #dfdfdf;
+		box-shadow: 0 -4px 4px -4px rgba(0, 0, 0, 0.1);
+
+		.inner {
+			float: right;
+			line-height: 23px;
+
+			.button {
+				margin-bottom: 0;
+			}
+		}
+	}
+}
+
+/**
+ * Select2 elements.
+ */
+.select2-drop,
+.select2-dropdown {
+	z-index: 999999 !important;
+}
+.select2-results {
+	line-height: 1.5em;
+	.select2-results__option, .select2-results__group {
+		margin: 0;
+		padding: 8px;
+	}
+	.description {
+		display: block;
+		color: #999;
+		padding-top: 4px;
+	}
+}
+.select2-dropdown {
+	border-color: #ddd;
+}
+.select2-dropdown--below {
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+.select2-dropdown--above {
+	box-shadow: 0 -1px 1px rgba(0, 0, 0, 0.1);
+}
+.select2-container {
+	.select2-selection__rendered.ui-sortable li {
+		cursor: move;
+	}
+	.select2-selection {
+		border-color: #ddd;
+	}
+	.select2-search__field {
+		min-width: 150px;
+	}
+	.select2-selection--single {
+		height: 32px;
+		.select2-selection__rendered {
+			line-height: 32px;
+			padding-right: 24px;
+		}
+		.select2-selection__arrow {
+			right: 3px;
+			height: 30px;
+		}
+	}
+	.select2-selection--multiple {
+		min-height: 28px;
+		border-radius: 0;
+		line-height: 1.5;
+		li {
+			margin: 0;
+		}
+		.select2-selection__choice {
+			padding: 2px 6px;
+			.description {
+				display: none;
+			}
+		}
+	}
+	.select2-selection__clear {
+		color: #999;
+		margin-top: -1px;
+	}
+	.select2-search--inline {
+		.select2-search__field {
+			font-family: inherit;
+			font-size: inherit;
+			font-weight: inherit;
+			padding: 3px 0;
+		}
+	}
+}
+.online-restaurant-reservation table.form-table {
+	.select2-container {
+		min-width: 400px !important;
+	}
+
+	.orr-reservation-schedule {
+		.select2-container {
+			*:focus {
+				outline: none;
+			}
+		}
+	}
+}
+.online-restaurant-reservation table.orr-reservation-exceptions {
+	.select2-container {
+		*:focus {
+			outline: none;
+		}
+	}
+}
+.post-type-table_reservation .tablenav {
+	.actions {
+		overflow: visible;
+	}
+	select,
+	input {
+		line-height: 1;
+		height: 32px;
+	}
+	.select2-container {
+		float: left;
+		width: 200px !important;
+		font-size: 14px;
+		vertical-align: middle;
+		margin: 1px 6px 4px 1px;
+	}
+}

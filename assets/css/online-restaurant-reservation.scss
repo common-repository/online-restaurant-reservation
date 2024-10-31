@@ -1,0 +1,272 @@
+/**
+ * online-restaurant-reservation.scss
+ * Governs the general look and feel of ORR sections of shortcodes using themes that do not
+ * integrate with ORR specifically.
+ */
+
+/**
+ * Imports
+ */
+@import 'mixins';
+@import 'variables';
+@import 'animation';
+@import 'fonts';
+
+/**
+ * Global styles
+ */
+.screen-reader-text {
+	clip: rect(1px, 1px, 1px, 1px);
+	height: 1px;
+	overflow: hidden;
+	position: absolute !important;
+	width: 1px;
+	word-wrap: normal !important;
+}
+
+/**
+ * Utility classes
+ */
+.clear {
+	clear: both;
+}
+
+/**
+ * Main ORR styles
+ */
+.online-restaurant-reservation {
+	.blockUI.blockOverlay {
+		position: relative;
+		@include loader();
+	}
+
+	.loader {
+		@include loader();
+	}
+
+	/**
+	 * Reservation form
+	 */
+	#reservation {
+		#place_reservation {
+			float: right;
+		}
+	}
+
+	.online-restaurant-reservation-fields {
+		@include clearfix();
+	}
+
+	.reservation-notes-toggle + .reservation-notes {
+		display: none;
+	}
+
+	/**
+	 * Buttons
+	 */
+	a.button,
+	button.button,
+	input.button,
+	#respond input#submit {
+		font-size: 100%;
+		margin: 0;
+		line-height: 1;
+		cursor: pointer;
+		position: relative;
+		text-decoration: none;
+		overflow: visible;
+		padding: 0.618em 1em;
+		font-weight: 700;
+		border-radius: 3px;
+		left: auto;
+		color: $secondarytext;
+		background-color: $secondary;
+		border: 0;
+		white-space: nowrap;
+		display: inline-block;
+		background-image: none;
+		box-shadow: none;
+		text-shadow: none;
+
+		&:hover {
+			background-color: $secondary - #111;
+			text-decoration: none;
+			background-image: none;
+			color: $secondarytext;
+		}
+
+		&.alt {
+			background-color: $primary;
+			color: $primarytext;
+			-webkit-font-smoothing: antialiased;
+
+			&:hover {
+				background-color: $primary - #111;
+				color: $primarytext;
+			}
+
+			&.disabled,
+			&:disabled,
+			&:disabled[disabled],
+			&.disabled:hover,
+			&:disabled:hover,
+			&:disabled[disabled]:hover {
+				background-color: $primary;
+				color: $primarytext;
+			}
+		}
+
+		&:disabled,
+		&.disabled,
+		&:disabled[disabled] {
+			color: inherit;
+			cursor: not-allowed;
+			opacity: 0.5;
+			padding: 0.618em 1em;
+
+			&:hover {
+				color: inherit;
+				background-color: $secondary;
+			}
+		}
+	}
+
+	/**
+	 * Forms
+	 */
+	form .form-row {
+		padding: 3px;
+		margin: 0 0 6px;
+
+		[placeholder]:focus::-webkit-input-placeholder {
+			transition: opacity 0.5s 0.5s ease;
+			opacity: 0;
+		}
+
+		label {
+			line-height: 2;
+		}
+
+		label.hidden {
+			visibility: hidden;
+		}
+
+		label.inline {
+			display: inline;
+		}
+
+		select {
+			cursor: pointer;
+			margin: 0;
+		}
+
+		.required {
+			color: red;
+			font-weight: 700;
+			border: 0;
+		}
+
+		.input-checkbox {
+			display: inline;
+			margin: -2px 8px 0 0;
+			text-align: center;
+			vertical-align: middle;
+		}
+
+		input.input-text,
+		textarea {
+			box-sizing: border-box;
+			width: 100%;
+			margin: 0;
+			outline: 0;
+			line-height: 1;
+		}
+
+		textarea {
+			height: 4em;
+			line-height: 1.5;
+			display: block;
+			box-shadow: none;
+		}
+
+		.select2-container {
+			width: 100%;
+			line-height: 2em;
+		}
+
+		&.orr-invalid {
+			label {
+				color: $red;
+			}
+			.select2-container,
+			input.input-text,
+			select {
+				border-color: $red;
+			}
+		}
+
+		&.orr-validated {
+			.select2-container,
+			input.input-text,
+			select {
+				border-color: $green - #111;
+			}
+		}
+
+		::-webkit-input-placeholder {
+			line-height: normal;
+		}
+
+		:-moz-placeholder {
+			line-height: normal;
+		}
+
+		:-ms-input-placeholder {
+			line-height: normal;
+		}
+	}
+}
+
+/**
+ * Notices.
+ */
+.online-restaurant-reservation-message,
+.online-restaurant-reservation-error,
+.online-restaurant-reservation-info {
+	padding: 1em;
+	margin: 0 0 2em;
+	position: relative;
+	background-color: #f7f6f7;
+	color: $secondarytext;
+	border-left: 5px solid $primary;
+	list-style: none outside;
+	@include clearfix();
+	width: auto;
+	word-wrap: break-word;
+
+	.button {
+		float: right;
+	}
+
+	li {
+		list-style: none outside !important; // Required for default theme compatibility
+		padding-left: 0 !important; // Required for default theme compatibility
+		margin-left: 0 !important; // Required for default theme compatibility
+	}
+}
+
+.online-restaurant-reservation-message {
+	border-left-color: $success;
+	background-color: $successbg;
+}
+
+.online-restaurant-reservation-error {
+	border-left-color: $error;
+	background-color: $errorbg;
+}
+
+.online-restaurant-reservation-info {
+	border-left-color: $info;
+	background-color: $infobg;
+}
+

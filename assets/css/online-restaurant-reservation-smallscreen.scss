@@ -1,0 +1,28 @@
+/**
+ * online-restaurant-reservation-smallscreen.scss
+ * Optimises the default ORR frontend layout when viewed on smaller screens.
+ */
+
+/**
+ * Imports
+ */
+@import 'mixins';
+@import 'variables';
+
+/**
+ * Style begins
+ */
+.online-restaurant-reservation,
+.online-restaurant-reservation-page {
+
+	/**
+	 * General layout
+	 */
+	.col2-set {
+		.col-1,
+		.col-2 {
+			float: none;
+			width: 100%;
+		}
+	}
+}
